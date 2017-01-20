@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+
+<html lang='es'>
+
+<head>
+
+	<title>Prefijos</title>
+	<meta charset='UTF-8'/>
+
+	<style>
+
+		span{
+			padding-left: 40px;
+		}
+
+	</style>
+
+	<script>
+
+		var vPrefijos = [["España", "+34", "flag_espanya.png"], ["Holanda", "+31", "flag_holanda.png"],["Gran Bretaña", "+44", "flag_reino_unido.png"], ["Estados Unidos", "+01", "flag_estados_unidos.png"],["Bélgica", "+32", "flag_belgica.png"], ["Grecia", "+30", "flag_grecia.png"]];
+
+		function abrirAyuda()
+		{
+			var ventAyuda = open("","","width=400 height=500");
+
+			ventAyuda.document.write("<script>"+"function enviarPrefijo(pref){opener.document.getElementById('tPref').value='+'+pref;window.close();}"+"</\script>");
+
+			ventAyuda.document.write("<h2>Lista de prefijos internacionales</h2>");
+
+			var sContenido = "";
+
+			ventAyuda.document.write("<table>");
+
+			for(var i = 0; i<vPrefijos.length; i++)
+			{
+				sContenido += "<tr>";
+
+				sContenido += "<td>";
+				sContenido += "<img width='15px' height='10px' src='img/"+vPrefijos[i][2]+"'/>";
+
+				
+				sContenido += "</td>";
+
+				sContenido += "<td>";
+				sContenido += "<span>" +vPrefijos[i][0] + ": </span>";
+				sContenido += "</td>";
+
+				sContenido += "<td>";
+				sContenido += "<button onclick='enviarPrefijo("+ vPrefijos[i][1] +")'>"+vPrefijos[i][1]+"</button>";
+				sContenido += "</td>";
+
+				sContenido += "</tr>";
+			}
+
+			ventAyuda.document.write(sContenido);
+
+			ventAyuda.document.write("</table>");
+		}
+
+	</script>
+
+</head>
+
+<body>
+
+	<p><span>Prefijo</span><span>Número</span></p>
+
+	<input type="text" id="tPref" maxlength="5" value="+" size="6">
+
+	<button onclick="abrirAyuda()">?</button>
+
+	<input type="text" pattern="[0-9]+" title="Debe introducir un número entero" id="tNum" size="12">
+	<!--comprobar que solo halla numeros-->
+
+
+</body>
+
+
+</html>
